@@ -33,72 +33,89 @@ class _ShlokDetailPageState extends State<ShlokDetailPage> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Text(
-                Provider.of<ShlokJsonDecodeProvider>(context, listen: false)
-                    .shlokJsonDecodeModel
-                    .allShloks[shlokIndex]
-                    .sanskrit,
-                style: const TextStyle(
-                  fontSize: 22,
-                ),
+      body: Stack(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsjkB9O2VFaZA9L7ClgVQ7-qz3FAG778f0D5072N0JMkLtPBy5eQagXdP5YPJBNfwNB0&usqp=CAU"),
+                fit: BoxFit.fill,
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              Divider(),
-              Text(
-                "Translation",
-              ),
-              Divider(),
-              const SizedBox(
-                height: 10,
-              ),
-              Divider(),
-              TextButton(
-                onPressed: () {
-                  Provider.of<ShlokJsonDecodeProvider>(context, listen: false)
-                      .englishLanguage();
-                },
-                child: const Text('English'),
-              ),
-              Divider(),
-              TextButton(
-                onPressed: () {
-                  Provider.of<ShlokJsonDecodeProvider>(context, listen: false)
-                      .hindiLanguage();
-                },
-                child: const Text('Hindi'),
-              ),
-              Divider(),
-              TextButton(
-                onPressed: () {
-                  Provider.of<ShlokJsonDecodeProvider>(context, listen: false)
-                      .gujaratiLanguage();
-                },
-                child: const Text('Gujarati'),
-              ),
-              Divider(),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                Provider.of<ShlokJsonDecodeProvider>(context)
-                    .shlokJsonDecodeModel
-                    .allShloks[shlokIndex]
-                    .translation,
-                style: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  Text(
+                    Provider.of<ShlokJsonDecodeProvider>(context, listen: false)
+                        .shlokJsonDecodeModel
+                        .allShloks[shlokIndex]
+                        .sanskrit,
+                    style: const TextStyle(
+                      fontSize: 22,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Divider(),
+                  Text(
+                    "Translation",
+                  ),
+                  Divider(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Divider(),
+                  TextButton(
+                    onPressed: () {
+                      Provider.of<ShlokJsonDecodeProvider>(context,
+                              listen: false)
+                          .englishLanguage();
+                    },
+                    child: const Text('English'),
+                  ),
+                  Divider(),
+                  TextButton(
+                    onPressed: () {
+                      Provider.of<ShlokJsonDecodeProvider>(context,
+                              listen: false)
+                          .hindiLanguage();
+                    },
+                    child: const Text('Hindi'),
+                  ),
+                  Divider(),
+                  TextButton(
+                    onPressed: () {
+                      Provider.of<ShlokJsonDecodeProvider>(context,
+                              listen: false)
+                          .gujaratiLanguage();
+                    },
+                    child: const Text('Gujarati'),
+                  ),
+                  Divider(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    Provider.of<ShlokJsonDecodeProvider>(context)
+                        .shlokJsonDecodeModel
+                        .allShloks[shlokIndex]
+                        .translation,
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       backgroundColor: Colors.blueGrey,
     );
